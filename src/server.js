@@ -1,10 +1,20 @@
 // Hilmi BOUALLEGUE 2016 Server Side Application with NodeJS
+
 // Load the http object from node library that used to create Http server
 var http= require("http");
+
 // Load the url object to use in the manipulation of the url requested by the user
 var url=require("url");
+
 // Node module used to split the params of the url
 var querystring=require("querystring");
+
+// Get the EventEmitter module to create an event & emit values
+var EventEmitter = require('events').EventEmitter;
+
+// Create an event named ev1
+var ev1 = new EventEmitter();
+
 
 // Create the server object
 var server= http.createServer(function(req,res){
@@ -29,5 +39,24 @@ var server= http.createServer(function(req,res){
     res.end();
 });
 
+/* Listen to event like JQuery define the event name & the callback function
+ */
+server.on("close",function(){
+    console.log("The server is closed");
+});
+
+//Listen & define a callback function for the event gameover
+ev1.on('gameover',function(msg){console.log(msg);});
+
+
+// Emit an event & its value
+ev1.emit('gameover',"GAME OVER");
+
+
+
+
 // Execute the server in the port XXXX
 server.listen(1111);
+
+// For close the server use close() methode that emit in event with name "close"  ///
+server.close();
