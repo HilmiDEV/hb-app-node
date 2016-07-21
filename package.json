@@ -11,5 +11,8 @@
   },
   "author": "Hilmi BOUALLEGUE",
   "license": "ISC",
-  "homepage": "https://github.com/HilmiDEV/hb-app-node#readme"
+  "homepage": "https://github.com/HilmiDEV/hb-app-node#readme",
+  "dependencies": {
+    "express": "4.14.0"
+  }
 }
