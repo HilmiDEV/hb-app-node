@@ -15,6 +15,11 @@ var EventEmitter = require('events').EventEmitter;
 // Create an event named ev1
 var ev1 = new EventEmitter();
 
+// Load the costum module in object named heeloMod from relative url of hello-module.js
+// or we can put directly the name of the module
+// & put the js file of the module in sub-directory of node_modules directory
+
+var helloMod = require("../hb_modules/hello-module");
 
 // Create the server object
 var server= http.createServer(function(req,res){
@@ -29,6 +34,10 @@ var server= http.createServer(function(req,res){
     console.log('The page asked by the user '+page);
     console.log("The params of the url "+paramstring);
     console.log(params);
+
+    //Call the function hello of the helloModule
+    helloMod.hello();
+
     // For write the Head of the response
     res.writeHead(200, {"Content-Type": "text/html"});
 
@@ -59,4 +68,4 @@ ev1.emit('gameover',"GAME OVER");
 server.listen(1111);
 
 // For close the server use close() methode that emit in event with name "close"  ///
-server.close();
+// server.close();
