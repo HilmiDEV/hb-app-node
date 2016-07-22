@@ -1,0 +1,7 @@
+{
+  "name": "todo-list-app",
+  "version": "1.0.0",
+  "description": "To do list app with NodeJS & Framework Express.JS **",
+  "author": "Hilmi BOUALLEGUE <hilmi.bouallegue@gmail.com>",
+  "license": "ISC"
+}
