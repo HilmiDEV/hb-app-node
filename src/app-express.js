@@ -16,7 +16,7 @@ app
     }).get("/hb/:n",function(req,res){
     res.setHeader("Content-Type","text/plain");
     // Get the parm from the req.params.param_name
-    res.end("Hello you want " + req.params.n);
+    res.render("Hello.ejs",{x:req.params.n});
 });
 
 
