@@ -12,10 +12,16 @@ app.use(session({secret: 'todotopsecret'}))
 
 /* S'il n'y a pas de todolist dans la session,
  on en crée une vide sous forme d'array avant la suite */
+
+/* Creation d'un middleware car c'est la seule moyenne pour exécuter des
+ fonctionnalités avant le chargement de n'importe quelle page
+ */
+
     .use(function(req, res, next){
         if (typeof(req.session.todolist) == 'undefined') {
             req.session.todolist = [];
         }
+        // pour passer vers la fonction suivante
         next();
     })
 
@@ -45,4 +51,4 @@ app.use(session({secret: 'todotopsecret'}))
         res.redirect('/todo');
     })
 
-    .listen(8080);
+    .listen(1111);
