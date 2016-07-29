@@ -27,6 +27,9 @@
         socket.emit('message', 'Salut serveur, ça va ?');
     });
 
+    var pseudo = prompt("Quel est votre pseudo nom ?");
+    socket.emit("pseudo-msg",pseudo);
+
 
 </script>
 </body>
