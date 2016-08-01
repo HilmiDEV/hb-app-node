@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"></meta>
+    <title>Chat app with Express.JS & Socket.io</title>
+</head>
+<body>
+<h1>Le chat Temps Réel</h1>
+<!--<form>-->
+    <input id="msgb" type="text"><button id="send">Envoyer</button>
+<!--</form>-->
+<div id="chat"></div>
+
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+
+<script>
+
+var pseudo = prompt("Saisir votre pseudo !");
+var socket = io.connect("http://localhost:1111");
+
+//socket.pseudo = pseudo;
+
+    socket.emit("join",pseudo);
+
+    socket.on("message",function (msg) {
+        $("#chat").append("<br> "+msg);
+    });
+    
+    $("#send").on("click",function () {
+        $("#chat").append("<br> "+pseudo+" : "+$("#msgb").val());
+        socket.emit("message",pseudo+" : "+$("#msgb").val());
+    });
+
+
+
+
+</script>
+
+
+</body>
+</html>
